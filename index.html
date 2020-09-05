@@ -102,14 +102,6 @@
 </div>
 
 <script>
-  const load = function() {
-    axios
-      .get('degrees.json')
-      .then((data) => {
-        v.isLoaded = true;
-        v.data = data.data;
-      })
-  }
   const v = new Vue({
     el: '#app',
     data: {
@@ -119,6 +111,40 @@
       isLoaded: false
     },
     methods: {
+      load() {
+        axios
+          .get('degrees.json')
+          .then((data) => {
+            this.data = data.data;
+            let query = document.location.search;
+            if (query && query.length > 1) {
+              query = query.substr(1);
+              const arrState = query.split(';');
+              this.settings.degree = arrState.shift();
+              this.settings.start = arrState.shift();
+              this.applySettings();
+              for (let o of arrState) {
+                const sp = arrState.split('=');
+                if (sp.length === 4) {
+                  this.dps[sp[0]] = { course: sp[1], semester: sp[2], credits: sp[3] };
+                }
+              }
+            }
+            this.isLoaded = true;
+            this.stateChanged();
+          })
+      },
+      stateChanged() {
+        const arrState = [ this.settings.degree || '', this.settings.start || '' ];
+        for (let req in this.dps) {
+          const x = this.dps[req];
+          if (x.course && x.semester)
+            arrState.push(req+'='+x.course+'='+x.semester+'='+x.credits);
+        }
+        const strState = arrState.join(';');
+        window.history.replaceState(null, null, "?"+strState);
+        this.$forceUpdate();
+      },
       calcCredits() {
         let sum = 0;
         for (let req in this.dps) {
@@ -149,10 +175,11 @@
           }
           this.data.options[req[0]].push({ value: 'S', text: 'Substitute another course' });
         }
+        this.stateChanged();
       },
       reqChanged(req) {
         this.dps[req].semester = this.dps[req].credits = null;
-        this.$forceUpdate();
+        this.stateChanged();
       },
       isOffered(req, sem) {
         let course = this.dps[req].course;
@@ -216,10 +243,10 @@
             else this.dps[req].semester = null;
           }
         }
-        this.$forceUpdate();
+        this.stateChanged();
       }
     },
-    mounted: load
+    mounted: () => v.load()
   })
 </script>
 
