@@ -127,27 +127,27 @@
         return sum;
       },
       applySettings() {
-        v.data.degree = v.data.degrees[v.settings.degree];
-        v.data.semesters = ['XFER'];
+        this.data.degree = this.data.degrees[this.settings.degree];
+        this.data.semesters = ['XFER'];
         let isStarted=false;
-        for (let sem of v.data.allSemesters) {
-          if (sem === v.settings.start) isStarted=true;
+        for (let sem of this.data.allSemesters) {
+          if (sem === this.settings.start) isStarted=true;
           if (!isStarted) continue;
-          v.data.semesters.push(sem);
-          if (v.data.semesters.length > v.data.degree.nSemesters) break;
+          this.data.semesters.push(sem);
+          if (this.data.semesters.length > this.data.degree.nSemesters) break;
         }
-        v.dps = {};
-        v.data.options = {};
-        for (let req of v.data.degree.requirements) {
-          v.dps[req[0]] = { course: null, semester: null, credits: null }
-          v.data.options[req[0]] = [];
-          for (let course in v.data.courses) {
+        this.dps = {};
+        this.data.options = {};
+        for (let req of this.data.degree.requirements) {
+          this.dps[req[0]] = { course: null, semester: null, credits: null }
+          this.data.options[req[0]] = [];
+          for (let course in this.data.courses) {
             let re = new RegExp(req[2]);
             if (re.test(course)) {
-              v.data.options[req[0]].push({ value: course, text: course+' '+v.data.courses[course].title });
+              this.data.options[req[0]].push({ value: course, text: course+' '+this.data.courses[course].title });
             }
           }
-          v.data.options[req[0]].push({ value: 'S', text: 'Substitute another course' });
+          this.data.options[req[0]].push({ value: 'S', text: 'Substitute another course' });
         }
       },
       reqChanged(req) {
