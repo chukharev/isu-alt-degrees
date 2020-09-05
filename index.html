@@ -71,6 +71,8 @@
       {{ sem }}
     </option>
   </select>
+
+  To save or share your DPS, copy the URL from the location bar.
   </p>
 
   <div v-if="data.semesters">
@@ -122,11 +124,13 @@
               const arrState = query.split(';');
               this.settings.degree = arrState.shift();
               this.settings.start = arrState.shift();
-              this.applySettings();
-              for (let o of arrState) {
-                const sp = arrState.split('=');
-                if (sp.length === 4) {
-                  this.dps[sp[0]] = { course: sp[1], semester: sp[2], credits: sp[3] };
+              if (this.settings.degree) {
+                this.applySettings();
+                for (let o of arrState) {
+                  const sp = o.split('=');
+                  if (sp.length === 4) {
+                    this.dps[sp[0]] = { course: sp[1], semester: sp[2], credits: sp[3] };
+                  }
                 }
               }
             }
@@ -246,7 +250,7 @@
         this.stateChanged();
       }
     },
-    mounted: () => v.load()
+    mounted: function() { this.load() }
   })
 </script>
 
