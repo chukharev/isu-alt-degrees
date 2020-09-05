@@ -1,0 +1,203 @@
+{
+  "allSemesters": ["F20", "S21", "F21", "S22", "F22", "S23", "F23", "S24", "F24", "S25", "F25", "S26", "F26", "S27", "F27"],
+  "degrees": {
+    "PhD_ALT": {
+      "title": "PhD Applied Linguistics & Technology",
+      "nSemesters": 10,
+      "credits": 54,
+      "researchCredits": 18,
+      "requirements": [
+        ["PRE-219", "Prereq: Intro to linguistics", "219|511"],
+        ["PRE-220", "Prereq: Descriptive grammar", "220"],
+        ["PRE-510", "Prereq: Computers in applied ling", "510"],
+        ["COR-512", "Core: Second lang acquisition", "512"],
+        ["COR-519", "Core: Language assessment", "519"],
+        ["COR-537", "Core: Grammar", "537"],
+        ["TEC-516", "Tech: Intro programming", "516"],
+        ["TEC-517", "Tech: Corpus linguistics", "517"],
+        ["TEC-520", "Tech: Computational ling", "520"],
+        ["TEC-530", "Tech: Tech & oral lang", "530"],
+        ["MET-527", "Methods: Discourse analysis", "527"],
+        ["MET-QAN", "Methods: Quant research", "QN"],
+        ["MET-QAL", "Methods: Qual research", "QL"],
+        ["SEMIN-1", "Seminar #1", "630"],
+        ["SEMIN-2", "Seminar #2", "630"],
+        ["SEMIN-3", "Seminar #3", "630"],
+        ["SEMIN-4", "Seminar #4", "630"],
+        ["ELECT-1", "Elective #1", ""],
+        ["ELECT-2", "Elective #2", ""],
+        ["ELECT-3", "Elective #3", ""],
+        ["ELECT-4", "Elective #4", ""]
+      ]
+    },
+    "MA_TESL": {
+      "title": "MA TESL/Applied Linguistics",
+      "nSemesters": 4,
+      "credits": 27,
+      "researchCredits": 3,
+      "requirements": [
+        ["PRE-219", "Prereq: Intro to linguistics", "219|511"],
+        ["PRE-220", "Prereq: Descriptive grammar", "220"],
+        ["PRE-510", "Prereq: Computers in applied ling", "510"],
+        ["COR-514", "Core: Sociolinguistics", "514"],
+        ["COR-537", "Core: Grammar", "537"],
+        ["COR-512", "Core: Second lang acquisition", "512"],
+        ["COR-52X", "Core: Literacy OR Pronunciation", "524|525"],
+        ["COR-519", "Core: Language assessment", "519"],
+        ["COR-58X", "Core: Practicum", "588|500|513"],
+        ["CALL-526", "Spec: CALL", "526"],
+        ["ESP-528", "Spec: ESP", "528"],
+        ["ESP-527", "Spec: ESP: Discourse Analysis", "527"],
+        ["LTR-524", "Spec: Literacy", "524"],
+        ["LIT-1", "Spec: Literature: Lit course #1", "LIT"],
+        ["LIT-2", "Spec: Literature: Lit course #2", "LIT"],
+        ["ELECT-1", "Elective #1", ""],
+        ["ELECT-2", "Elective #2", ""],
+        ["ELECT-3", "Elective #3", ""]
+      ]
+    }
+  },
+
+  "courses": {
+    "LING219": {
+      "title": "Introduction to linguistics (UG)",
+      "credits": 0
+    },
+    "LING220": {
+      "title": "Descr English grammar (UG)",
+      "credits": 0
+    },
+    "TEST220": {
+      "title": "Grammar testout",
+      "credits": 0
+    },
+    "LING516": {
+      "title": "Methods of formal linguistic analysis",
+      "prereq": ["219|511"],
+      "offered": ["F21", "S23", "F24"],
+      "credits": 3
+    },
+    "TEST516": {
+      "title": "Computer programming testout",
+      "credits": 0
+    },
+    "LING520": {
+      "title": "Computational analysis of English",
+      "prereq": ["510", "219|511", "516"],
+      "offered": ["F20", "S22", "F23", "S25"],
+      "credits": 3
+    },
+    "LING510": {
+      "title": "Intro to tech in applied ling",
+      "offered": ["F20", "F21", "F22", "F23", "F24", "F25"],
+      "credits": 3
+    },
+    "ENGL500": {
+      "title": "Proseminar teaching comp",
+      "offered": ["F20", "F21", "F22", "F23", "F24"] ,
+      "credits": 3
+    },
+    "LING511": {
+      "title": "Intro to ling analysis",
+      "offered": ["F20", "F21", "F22", "F23", "F24"],
+      "credits": 3
+    },
+    "LING519": {	
+      "title": "Second language assessment",
+      "prereq": ["219|511"],
+      "offered": ["S21", "S22", "S23", "S24", "S25", "S26"],
+      "credits": 3
+    },
+    "LING623QL": {
+      "title": "Research methods (qual)",
+      "offered": ["S22", "S24", "S26"],
+      "credits": 3
+    },
+    "LING623QN": {
+      "title": "Research methods (quan)",
+      "offered": ["S21", "S23", "S25"],
+      "credits": 3
+    },
+    "LING524": {
+      "title": "Literacy for nonnative speakers",
+      "prereq": ["511|219"],
+      "offered": ["F20", "F22", "F24", "F26"],
+      "credits": 3
+    },
+    "LING525": {
+      "title": "Second language pronunciation",
+      "prereq": ["511|219"],
+      "offered": ["F21", "F23", "F25"],
+      "credits": 3
+    },
+    "LING528": {
+      "title": "English for specific purposes",
+      "prereq": ["511|219"],
+      "offered": ["F21", "F23", "F25"],
+      "credits": 3
+    },
+    "LING530": {
+      "title": "Technology and oral language",
+      "prereq": ["511|219"],
+      "offered": ["S21", "F22", "F24"],
+      "credits": 3
+    },
+    "LING517": {
+      "title": "Corpus linguistics",
+      "prereq": ["511|219"],
+      "offered": ["S22", "S24", "S26"],
+      "credits": 3
+    },
+    "LING527": {
+      "title": "Discourse analysis",
+      "prereq": ["511|219"],
+      "offered": ["S21", "S23", "S25"],
+      "credits": 3
+    },
+    "LING526": {
+      "title": "Computer-assisted lang learning",
+      "prereq": ["511|219"],
+      "offered": ["S21", "S23", "S25"],
+      "credits": 3
+    },
+    "LING626": {
+      "title": "Computer-assisted lang testing",
+      "prereq": ["510", "511|219", "519"],
+      "offered": ["F20", "S22", "S24"],
+      "credits": 3
+    },
+    "LING512": {
+      "title": "Second lang acquisition",
+      "prereq": ["511|219"],
+      "offered": ["F21", "S23", "F24"],
+      "credits": 3
+    },
+    "LING514": {
+      "title": "Sociolinguistics",
+      "prereq": ["511|219"],
+      "offered": ["F20", "S22", "F23", "S25"],
+      "credits": 3
+    },
+    "LING537": {
+      "title": "Corpus approaches to grammar",
+      "prereq": ["220", "511|219"],
+      "offered": ["S21", "F22", "S24"],
+      "credits": 3
+    },
+    "LING630": {
+      "title": "Seminar (various topics)",
+      "prereq": ["510", "511|219"],
+      "credits": 3,
+      "repeatable": true
+    },
+    "LING588": {
+      "title": "Supervised practice ESL",
+      "credits": 3
+    },
+    "SPCM513": {
+      "title": "Teaching public speaking",
+      "credits": 3,
+      "offered": ["F20", "F21", "F22", "F23", "F24", "F25", "F26", "F27", "F28", "F29", "F30"]
+    }
+  }
+}

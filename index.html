@@ -1,0 +1,227 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
+<title>
+  Interactive DPS | ISU Applied Linguistics
+</title>
+
+</head>
+<body>
+
+<style>
+  body {
+    font-family: Arial;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  td, th {
+    padding: 2px;
+  }
+  .clickable {
+    text-align: center;
+  }
+  .clickable:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+  .green {
+    background-color: green;
+    color: white;
+  }
+  .yellow {
+    background-color: yellow;
+  }
+  .red {
+    background-color: red;
+    color: white;
+  }
+  .gray {
+    background-color: #999999;
+    color: white;
+  }
+  .black {
+    background-color: black;
+    color: white;
+  }
+  .blue {
+    background-color: blue;
+    color: white;
+  }
+  .hoverable:hover {
+    background-color: #eeeeee;
+  }
+</style>
+
+<div id="app" v-if="isLoaded">
+  <h1>ISU ALT Degree Planning Tool</h1>
+  <p>Degree:
+  <select v-model="settings.degree" @change="applySettings()">
+    <option v-for="(v,k) in data.degrees" v-bind:value="k">
+      {{ v.title }}
+    </option>
+  </select>
+
+  Entry term:
+  <select v-model="settings.start" @change="applySettings()">
+    <option v-for="sem in data.allSemesters">
+      {{ sem }}
+    </option>
+  </select>
+  </p>
+
+  <div v-if="data.semesters">
+      
+    <table border=1>
+    <tr><th>Requirement</th><th>Course</th>
+      <th v-for="sem in data.semesters">{{ sem }}</th>
+    </tr>
+    <tr v-for="req in data.degree.requirements" class="hoverable">
+      <td>{{req[1]}}</td>
+      <td v-bind:class="renderCourseClass(dps[req[0]].course)">
+        <select v-model="dps[req[0]].course" @change="reqChanged(req[0])">
+          <option value=""></option>
+          <option v-for="option in data.options[req[0]]" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </td>
+      <td v-for="sem in data.semesters" v-on:click="clickCell(req[0], sem)" class="clickable" v-bind:class="renderCellClass(req[0], sem)">
+        {{ renderCell(req[0], sem) }}
+      </td>
+    </tr>
+    </table>
+
+    <p>Coursework: {{ calcCredits() }} / {{ data.degree.credits }} credits (+ {{ data.degree.researchCredits }} research credits).</p>
+
+    <p>Legend: green = ok, yellow = prerequisites not met, red = course not offered, blue = transfer/substitution approval needed.</p>
+  </div>
+</div>
+
+<script>
+  const load = function() {
+    axios
+      .get('degrees.json')
+      .then((data) => {
+        v.isLoaded = true;
+        v.data = data.data;
+      })
+  }
+  const v = new Vue({
+    el: '#app',
+    data: {
+      data: null,
+      dps: {},
+      settings: {},
+      isLoaded: false
+    },
+    methods: {
+      calcCredits() {
+        let sum = 0;
+        for (let req in this.dps) {
+          if (this.dps[req].credits) sum += this.dps[req].credits;
+        }
+        return sum;
+      },
+      applySettings() {
+        v.data.degree = v.data.degrees[v.settings.degree];
+        v.data.semesters = ['XFER'];
+        let isStarted=false;
+        for (let sem of v.data.allSemesters) {
+          if (sem === v.settings.start) isStarted=true;
+          if (!isStarted) continue;
+          v.data.semesters.push(sem);
+          if (v.data.semesters.length > v.data.degree.nSemesters) break;
+        }
+        v.dps = {};
+        v.data.options = {};
+        for (let req of v.data.degree.requirements) {
+          v.dps[req[0]] = { course: null, semester: null, credits: null }
+          v.data.options[req[0]] = [];
+          for (let course in v.data.courses) {
+            let re = new RegExp(req[2]);
+            if (re.test(course)) {
+              v.data.options[req[0]].push({ value: course, text: course+' '+v.data.courses[course].title });
+            }
+          }
+          v.data.options[req[0]].push({ value: 'S', text: 'Substitute another course' });
+        }
+      },
+      reqChanged(req) {
+        this.dps[req].semester = this.dps[req].credits = null;
+        this.$forceUpdate();
+      },
+      isOffered(req, sem) {
+        let course = this.dps[req].course;
+        if (course && course in this.data.courses && (this.data.courses[course].offered ? this.data.courses[course].offered.includes(sem) : sem !== 'XFER')) return true;
+        return false;
+      },
+      renderCell(req, sem) {
+        if (this.dps[req].semester === sem) return this.dps[req].credits;
+        return this.isOffered(req, sem) ? '+' : '';
+      },
+      renderCourseClass(course) {
+        if (course in this.data.courses && !this.data.courses[course].repeatable) {
+          let cnt=0;
+          for (let req in this.dps) {
+            if (this.dps[req].course === course) cnt++;
+          }
+          if (cnt > 1) return 'red';
+        }
+      },
+      checkPrereqs(req, sem) {
+        let course = this.dps[req].course;
+        if (!course || !(course in this.data.courses)) return;
+        if (!this.data.courses[course].prereq) return true;
+        let coursesTaken = '';
+        for (let sem1 of this.data.semesters) {
+          if (sem1 === sem) break;
+          for (let x in this.dps) {
+            if (this.dps[x].semester === sem1) coursesTaken += ' '+this.dps[x].course;
+          }
+        }
+        for (let prereq of this.data.courses[course].prereq) {
+          let re = new RegExp(prereq);
+          if (!re.test(coursesTaken)) return false;
+        }
+        return true;
+      },
+      renderCellClass(req, sem) {
+        let taken = this.dps[req].semester === sem;
+        if (!taken) return;
+        if (sem === 'XFER') return 'blue';
+        if (this.dps[req].course==='S') return 'blue';
+        let offered = this.isOffered(req, sem);
+        if (offered) {
+          let pr = this.checkPrereqs(req, sem);
+          if (pr) return 'green'; else return 'yellow';
+        }
+        return 'red';
+      },
+      clickCell(req, sem) {
+        if (!this.dps[req].course) return;
+        if (this.dps[req].semester === sem) {
+          this.dps[req].semester = this.dps[req].credits = null;
+        } else {
+          let course = this.dps[req].course;
+          this.dps[req].semester = sem;
+          if (course && course in this.data.courses) {
+            this.dps[req].credits = this.data.courses[course].credits;
+          } else {
+            let cr = parseInt(window.prompt("Please enter the number of credits", "3"));
+            if (cr) this.dps[req].credits = cr;
+            else this.dps[req].semester = null;
+          }
+        }
+        this.$forceUpdate();
+      }
+    },
+    mounted: load
+  })
+</script>
+
+</body>
+</html>
