@@ -129,7 +129,7 @@
                 for (let o of arrState) {
                   const sp = o.split('=');
                   if (sp.length === 4) {
-                    this.dps[sp[0]] = { course: sp[1], semester: sp[2], credits: sp[3] };
+                    this.dps[sp[0]] = { course: sp[1], semester: sp[2], credits: Number(sp[3]) };
                   }
                 }
               }
