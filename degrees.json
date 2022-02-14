@@ -175,7 +175,7 @@
     "LING514": {
       "title": "Sociolinguistics",
       "prereq": ["511|219"],
-      "offered": ["F20", "S22", "F23", "S25"],
+      "offered": ["F20", "S23"],
       "credits": 3
     },
     "LING537": {
