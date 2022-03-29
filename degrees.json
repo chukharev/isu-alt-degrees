@@ -105,7 +105,7 @@
     "LING519": {	
       "title": "Second language assessment",
       "prereq": ["219|511"],
-      "offered": ["S21", "S22", "S23", "S24", "S25", "S26"],
+      "offered": ["S21", "S22", "S24", "S25", "S26"],
       "credits": 3
     },
     "LING623QL": {
@@ -181,7 +181,7 @@
     "LING537": {
       "title": "Corpus approaches to grammar",
       "prereq": ["220", "511|219"],
-      "offered": ["S21", "F22", "S24"],
+      "offered": ["S21", "S23"],
       "credits": 3
     },
     "LING630": {
