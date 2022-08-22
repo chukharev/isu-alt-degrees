@@ -89,33 +89,33 @@
     },
     "LING510": {
       "title": "Intro to tech in applied ling",
-      "offered": ["F20", "F21", "F22", "F23", "F24", "F25"],
+      "offered": ["F20", "F21", "F23", "F24", "F25", "F26", "F27"],
       "credits": 3
     },
     "ENGL500": {
       "title": "Proseminar teaching comp",
-      "offered": ["F20", "F21", "F22", "F23", "F24"] ,
+      "offered": ["F20", "F21", "F22", "F23", "F24", "F25", "F26", "F27"] ,
       "credits": 3
     },
     "LING511": {
       "title": "Intro to ling analysis",
-      "offered": ["F20", "F21", "F22", "F23", "F24"],
+      "offered": ["F20", "F21", "F23", "F24", "F25", "F26", "F27"],
       "credits": 3
     },
     "LING519": {	
       "title": "Second language assessment",
       "prereq": ["219|511"],
-      "offered": ["S21", "S22", "S24", "S25", "S26"],
+      "offered": ["S21", "S22", "S24", "S25", "S26", "S27"],
       "credits": 3
     },
     "LING623QL": {
       "title": "Research methods (qual)",
-      "offered": ["S22", "S24", "S26"],
+      "offered": ["S22", "F23", "S25", "F26"],
       "credits": 3
     },
     "LING623QN": {
       "title": "Research methods (quan)",
-      "offered": ["S21", "S23", "S25"],
+      "offered": ["S21", "F22", "S24", "F25", "S27"],
       "credits": 3
     },
     "LING524": {
@@ -127,61 +127,61 @@
     "LING525": {
       "title": "Second language pronunciation",
       "prereq": ["511|219"],
-      "offered": ["F21", "F23", "F25"],
+      "offered": ["F21", "F23", "F25", "F27"],
       "credits": 3
     },
     "LING528": {
       "title": "English for specific purposes",
       "prereq": ["511|219"],
-      "offered": ["F21", "F23", "F25"],
+      "offered": ["F22", "S24", "S26"],
       "credits": 3
     },
     "LING530": {
       "title": "Technology and oral language",
       "prereq": ["511|219"],
-      "offered": ["S21", "F22", "F24"],
+      "offered": ["S21", "F22", "S24", "F25", "S27"],
       "credits": 3
     },
     "LING517": {
       "title": "Corpus linguistics",
       "prereq": ["511|219"],
-      "offered": ["S22", "S24", "S26"],
+      "offered": ["F23", "S25", "F26"],
       "credits": 3
     },
     "LING527": {
       "title": "Discourse analysis",
       "prereq": ["511|219"],
-      "offered": ["S21", "S23", "S25"],
+      "offered": ["S23", "F24", "S26"],
       "credits": 3
     },
     "LING526": {
       "title": "Computer-assisted lang learning",
       "prereq": ["511|219"],
-      "offered": ["S21", "S23", "S25"],
+      "offered": ["S23", "S25", "S27"],
       "credits": 3
     },
     "LING626": {
       "title": "Computer-assisted lang testing",
       "prereq": ["510", "511|219", "519"],
-      "offered": ["F20", "S22", "S24"],
+      "offered": ["S24", "S26"],
       "credits": 3
     },
     "LING512": {
       "title": "Second lang acquisition",
       "prereq": ["511|219"],
-      "offered": ["F21", "S23", "F24"],
+      "offered": ["S23", "S25", "F26"],
       "credits": 3
     },
     "LING514": {
       "title": "Sociolinguistics",
       "prereq": ["511|219"],
-      "offered": ["F20", "S23"],
+      "offered": ["F20", "S23", "S25", "S27"],
       "credits": 3
     },
     "LING537": {
       "title": "Corpus approaches to grammar",
       "prereq": ["220", "511|219"],
-      "offered": ["S21", "S23"],
+      "offered": ["S21", "S23", "F24", "S26"],
       "credits": 3
     },
     "LING630": {
