@@ -94,7 +94,7 @@
     "LING519": {	
       "title": "Second language assessment",
       "prereq": ["219|511"],
-      "offered": ["S21", "S22", "S24", "S25", "S26", "S27"],
+      "offered": ["S21", "S22", "F23", "F25", "S27"],
       "credits": 3
     },
     "LING623B": {
