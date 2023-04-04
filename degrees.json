@@ -72,7 +72,7 @@
     "LING516": {
       "title": "Methods of formal linguistic analysis",
       "prereq": ["219|511"],
-      "offered": ["F21", "S25", "S27"],
+      "offered": ["F21", "S23", "S25", "S27"],
       "credits": 3
     },
     "LING520": {
