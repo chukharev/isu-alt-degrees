@@ -1,5 +1,5 @@
 {
-  "allSemesters": ["F20", "S21", "F21", "S22", "F22", "S23", "F23", "S24", "F24", "S25", "F25", "S26", "F26", "S27", "F27"],
+  "allSemesters": ["F20", "S21", "F21", "S22", "F22", "S23", "F23", "S24", "F24", "S25", "F25", "S26", "F26", "S27", "F27", "S28", "F28", "S29", "F29"],
   "degrees": {
     "PhD_ALT": {
       "title": "PhD Applied Linguistics & Technology",
@@ -9,25 +9,24 @@
       "requirements": [
         ["PRE-219", "Prereq: Intro to linguistics", "219|511"],
         ["PRE-220", "Prereq: Descriptive grammar", "220"],
-        ["PRE-510", "Prereq: Computers in applied ling", "510"],
         ["COR-512", "Core: Second lang acquisition", "512"],
         ["COR-519", "Core: Language assessment", "519"],
         ["COR-537", "Core: Grammar", "537"],
-        ["TEC-516", "Tech: Intro programming", "516"],
-        ["TEC-517", "Tech: Corpus linguistics", "517"],
-        ["TEC-520", "Tech: Computational ling", "520"],
-        ["TEC-530", "Tech: Tech & oral lang", "530"],
+        ["TEC-1", "Technology", "516|517|520|530"],
+        ["TEC-2", "Technology", "516|517|520|530"],
+        ["TEC-3", "Technology", "516|517|520|530"],
         ["MET-527", "Methods: Discourse analysis", "527"],
-        ["MET-QAN", "Methods: Quant research", "QN"],
-        ["MET-QAL", "Methods: Qual research", "QL"],
+        ["MET-QAN", "Methods: Quant research", "623A"],
+        ["MET-QAL", "Methods: Qual research", "623B"],
         ["SEMIN-1", "Seminar #1", "630"],
         ["SEMIN-2", "Seminar #2", "630"],
         ["SEMIN-3", "Seminar #3", "630"],
-        ["SEMIN-4", "Seminar #4", "630"],
         ["ELECT-1", "Elective #1", ""],
         ["ELECT-2", "Elective #2", ""],
         ["ELECT-3", "Elective #3", ""],
-        ["ELECT-4", "Elective #4", ""]
+        ["ELECT-4", "Elective #4", ""],
+        ["ELECT-5", "Elective #5", ""],
+        ["ELECT-6", "Elective #6", ""]
       ]
     },
     "MA_TESL": {
@@ -38,7 +37,6 @@
       "requirements": [
         ["PRE-219", "Prereq: Intro to linguistics", "219|511"],
         ["PRE-220", "Prereq: Descriptive grammar", "220"],
-        ["PRE-510", "Prereq: Computers in applied ling", "510"],
         ["COR-514", "Core: Sociolinguistics", "514"],
         ["COR-537", "Core: Grammar", "537"],
         ["COR-512", "Core: Second lang acquisition", "512"],
@@ -74,22 +72,13 @@
     "LING516": {
       "title": "Methods of formal linguistic analysis",
       "prereq": ["219|511"],
-      "offered": ["F21", "S23", "F24"],
+      "offered": ["F21", "S25", "S27"],
       "credits": 3
-    },
-    "TEST516": {
-      "title": "Computer programming testout",
-      "credits": 0
     },
     "LING520": {
       "title": "Computational analysis of English",
-      "prereq": ["510", "219|511", "516"],
-      "offered": ["F20", "S22", "F23", "S25"],
-      "credits": 3
-    },
-    "LING510": {
-      "title": "Intro to tech in applied ling",
-      "offered": ["F20", "F21", "F23", "F24", "F25", "F26", "F27"],
+      "prereq": ["219|511"],
+      "offered": ["F20", "S22", "S24", "S26"],
       "credits": 3
     },
     "ENGL500": {
@@ -108,12 +97,12 @@
       "offered": ["S21", "S22", "S24", "S25", "S26", "S27"],
       "credits": 3
     },
-    "LING623QL": {
+    "LING623B": {
       "title": "Research methods (qual)",
       "offered": ["S22", "F23", "S25", "F26"],
       "credits": 3
     },
-    "LING623QN": {
+    "LING623A": {
       "title": "Research methods (quan)",
       "offered": ["S21", "F22", "S24", "F25", "S27"],
       "credits": 3
@@ -121,7 +110,7 @@
     "LING524": {
       "title": "Literacy for nonnative speakers",
       "prereq": ["511|219"],
-      "offered": ["F20", "F22", "F24", "F26"],
+      "offered": ["F20", "F24", "F26"],
       "credits": 3
     },
     "LING525": {
@@ -139,13 +128,13 @@
     "LING530": {
       "title": "Technology and oral language",
       "prereq": ["511|219"],
-      "offered": ["S21", "F22", "S24", "F25", "S27"],
+      "offered": ["S21", "F22", "F24", "F26"],
       "credits": 3
     },
     "LING517": {
       "title": "Corpus linguistics",
       "prereq": ["511|219"],
-      "offered": ["F23", "S25", "F26"],
+      "offered": ["F23", "F25"],
       "credits": 3
     },
     "LING527": {
@@ -162,8 +151,14 @@
     },
     "LING626": {
       "title": "Computer-assisted lang testing",
-      "prereq": ["510", "511|219", "519"],
-      "offered": ["S24", "S26"],
+      "prereq": ["511|219", "519"],
+      "offered": [],
+      "credits": 3
+    },
+    "LING515": {
+      "title": "Statistical NLP",
+      "prereq": ["511|219", "519"],
+      "offered": [],
       "credits": 3
     },
     "LING512": {
@@ -175,7 +170,7 @@
     "LING514": {
       "title": "Sociolinguistics",
       "prereq": ["511|219"],
-      "offered": ["F20", "S23", "S25", "S27"],
+      "offered": ["F20", "S23"],
       "credits": 3
     },
     "LING537": {
@@ -186,7 +181,7 @@
     },
     "LING630": {
       "title": "Seminar (various topics)",
-      "prereq": ["510", "511|219"],
+      "prereq": ["511|219"],
       "credits": 3,
       "repeatable": true
     },
